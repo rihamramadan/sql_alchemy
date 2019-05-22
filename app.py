@@ -31,7 +31,6 @@ def welcome():
 
 @app.route("/api/v1.0/precipitation")
 def precipitiation():
-    # Query 
     results = session.query(Measurement.date, Measurement.prcp).order_by(Measurement.date).all()
     all_results = []
     for result in results:
@@ -79,7 +78,6 @@ def given_date(start):
         result_dict['Highest Temperature'] = result[1]
         result_dict['Lowest Temperature'] = result[2]
         date_list.append(result_dict)
-
     return jsonify(date_list)
 
 @app.route('/api/v1.0/<start2>/<end>/')
